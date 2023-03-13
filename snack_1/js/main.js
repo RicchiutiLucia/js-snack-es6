@@ -20,13 +20,18 @@ const listaBici = [
 
 console.log(listaBici);
 
-
-const valoreMinore =  Math.min.apply(null, listaBici.map(biciclette => biciclette.peso));
-
-listaBici.forEach(bicicletta =>{
-    if(bicicletta.peso == valoreMinore){
-        console.log(`La bicicletta con il peso minore è la ${bicicletta.nome} con un peso di ${bicicletta.peso}`);
+let indiceBiciPiuLeggera = 0;
+for(let i= 0; i < listaBici.length; i++){
+    if(listaBici[i].peso < listaBici[indiceBiciPiuLeggera].peso){
+        indiceBiciPiuLeggera = i;
     }
-});
+}
+
+console.log(indiceBiciPiuLeggera);
+
+const {nome , peso} = listaBici[indiceBiciPiuLeggera];
+
+const biciDom = document.getElementById('bici');
+biciDom.innerHTML = `La bici più leggera è: ${nome} che pesa ${peso} kg`
 
 
